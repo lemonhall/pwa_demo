@@ -1,11 +1,23 @@
 {
-    "name": "我的 PWA",
+    "name": "密码生成器",
+    "short_name": "密码生成",
+    "description": "安全密码生成工具",
     "icons": [
       {
         "src": "icons/512.png",
         "type": "image/png",
-        "sizes": "512x512"
+        "sizes": "512x512",
+        "purpose": "any maskable"
       }
     ],
-    "display" : "standalone"
-  }
+    "display": "standalone",
+    "theme_color": "#007AFF",
+    "background_color": "#F2F2F7",
+    "start_url": "/",
+    "scope": "/",
+    "orientation": "portrait",
+    "categories": ["utilities"],
+    "ios": {
+      "prefer_related_applications": false
+    }
+}

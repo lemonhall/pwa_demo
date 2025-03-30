@@ -49,11 +49,31 @@
                 return password;
             }
 
-            doButton.addEventListener("touchstart", (event) => {
-                var outputHtml = "";
-                for(var i=0;i<5;i++){
-                    pass1 = randomPass();
-                    outputHtml = outputHtml + pass1 + "</br>";
+            doButton.addEventListener("click", (event) => {
+                outputArea.innerHTML = "";
+                for(let i=0; i<5; i++){
+                    const password = randomPass();
+                    const card = document.createElement("div");
+                    card.className = "password-card";
+                    
+                    const passwordText = document.createElement("div");
+                    passwordText.textContent = password;
+                    
+                    const copyBtn = document.createElement("button");
+                    copyBtn.className = "copy-btn";
+                    copyBtn.textContent = "复制";
+                    copyBtn.addEventListener("click", () => {
+                        navigator.clipboard.writeText(password)
+                            .then(() => {
+                                copyBtn.textContent = "已复制!";
+                                setTimeout(() => {
+                                    copyBtn.textContent = "复制";
+                                }, 1500);
+                            });
+                    });
+                    
+                    card.appendChild(passwordText);
+                    card.appendChild(copyBtn);
+                    outputArea.appendChild(card);
                 }
-                outputArea.innerHTML=outputHtml;
             });
